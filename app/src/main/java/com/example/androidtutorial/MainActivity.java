@@ -1,7 +1,9 @@
 package com.example.androidtutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private Button button;
+    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 textView.setText("Black Munde");
                 textView.setBackgroundColor(getResources().getColor(R.color.black));
+                Intent intent = new Intent(new Intent(MainActivity.this, SecondActivity.class));
+
+                String string = textView.getText().toString();
+                intent.putExtra("string", string);
+                startActivity(intent);
+
                 Toast.makeText(getApplicationContext(), "Color Changed", Toast.LENGTH_SHORT).show();
             }
         }
